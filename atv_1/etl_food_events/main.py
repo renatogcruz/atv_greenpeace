@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, url_for, redirect
 import pandas as pd
 
 from os import environ
@@ -43,14 +43,31 @@ def access_bq():
     # for row in query_res:
     #     print(row)
 
-    return jsonify({'status': 'success', 'massage': f'total number of observations = {query_df.shape[0]}'}), 200
+    return redirect(url_for('read_bq', query_df=query_df))
 
 
-@app.route("/read_bq")
-def read_bq():
+@app.route("/save_bq", methods=["GET"])
+def save_bq(query_df):
+
+    query_df = query_df
 
     # Connect to bigquery
-    project_id = 'greenpeace-360016'  # environ['PROJECT_ID']
+    project_id = environ['PROJECT_ID']
+    credentials = get_credentials()
+
+    query_df.to_gbq(destination_table='fda_food.food_events', project_id=project_id,
+                    credentials=credentials, if_exists='replace')
+
+    return jsonify({'status': 'success', 'massage': f'total number of observations = {df.shape[0]}'}), 200
+
+
+@app.route("/read_bq", methods=["GET"])
+def read_bq(query_df):
+
+    query_df = query_df
+
+    # Connect to bigquery
+    project_id = environ['PROJECT_ID']
     credentials = get_credentials()
 
     query = f'''
@@ -61,15 +78,7 @@ def read_bq():
     df = pd.read_gbq(
         query, credentials=credentials,  project_id=project_id)
 
-    return jsonify({'status': 'success', 'massage': f'total number of observations = {df.shape[0]}'}), 200
-
-
-# @app.route("/access_bq")
-# def access_bq():
-#     df = bq.dataframe()
-#     print(df.head())
-
-#     return jsonify({'status': 'success', 'massage': 'etl project food events - Greenpeace Brazil'}), 200
+    return jsonify({'status': 'success', 'massage': {df.to_dict("records")}}), 200
 
 
 if __name__ == "__main__":  # On running python app.py
