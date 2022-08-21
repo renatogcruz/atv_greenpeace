@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 
-    return jsonify({'status': 'success', 'massage': 'etl project newspaper articles about greenpeace brazil'}), 200
+    return jsonify({'status': 'success', 'massage': 'etl project newspaper articles about Greenpeace Brazil'}), 200
 
 
 @app.route("/get_articles")
