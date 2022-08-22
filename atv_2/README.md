@@ -27,12 +27,12 @@ ______________
 
 A primeira integração foi realizada seguindo os passos propostos pelo enunciado: importação dos dados, limpeza e disponibilização dos dados, adição de coluna para **classificação manual** de sentimento e exportação dos dados.
 
-Para isso foi usado o framework flask e o trabalho se estrutura em endpoints. Para uma explicação mais detalhada, [acesse](https://github.com/renatogcruz/atv_greenpeace/tree/main/atv_2/etl_articles).
+Para isso foi usado o framework flask e o trabalho se estrutura em endpoints. Para uma explicação mais detalhada, **[ACESSE AQUI](https://github.com/renatogcruz/atv_greenpeace/tree/main/atv_2/etl_articles)**.
 
 
 A segunda integração também foi realizada seguindo os passos propostos pelo enunciado mas seguindo uma lógica de maior autônomia do código: importação dos dados, limpeza e disponibilização dos dados, adição de coluna para **classificação automática** de sentimento e exportação dos dados.
 
-Para isso foi usado o framework flask e o trabalho se estrutura em endpoints. Para uma explicação mais detalhada, [acesse](https://github.com/renatogcruz/atv_greenpeace/tree/main/atv_2/sentiment_classification).
+Para isso foi usado o framework flask e o trabalho se estrutura em endpoints. Para uma explicação mais detalhada, **[ACESSE AQUI](https://github.com/renatogcruz/atv_greenpeace/tree/main/atv_2/sentiment_classification)**.
 
 
 ______________
