@@ -1,5 +1,36 @@
 # ETL CLIPPING | GREENPEACE
 
+## Endpoints
+
+1. Essa integração se resume em 3 endpoints:
+
+**index** `https://url_cloud_run_gcp/`
+
+Esse endpoint é de boas-vindas do projeto e é útil para o ambiente de teste. Não tem função na infraestrutura da Cloud Computing.
+
+2. **get_articles** `https://url_cloud_run_gcp/get_articles`
+
+Este endpoint faz:
+1 - requisições de dados da News API;
+2 - limpeza e disponibilização de campo para classificação manual da equipe de imprensa com a avaliação de sentimento;
+3 - salvar apenas dados novos na planilha do ´Google Sheets´ (´banco temporário´).
+
+A proposta de execução deste endpoint no `cloud scheduler` é às 6:00, horário que antecede o expediente da equipe de imprensa do Greenpeace e horário posterior as atualizações das notícias no portal dos jornais.
+
+Como forma de autônomia de integração, este endpoint contém um serviço de aviso via email em caso de apresentar falhas.
+
+
+3. **update_bigquery** `https://url_cloud_run_gcp/update_bigquery`
+
+Este endpoint faz:
+1 - lê  os dados da planilha do Google Sheets onde são gravados os dados novos (endpoint anterior);
+2 - salva apenas dados novos e preenchidos no ´bigquery´ (´banco consolidado´).     
+
+A proposta de execução deste endpoint no `cloud scheduler` é às 20:00, horário posterior ao expediente da equipe de imprensa do Greenpeace.
+
+Como forma de autônomia de integração, assim como no endpoint anterior, este também contém um serviço de aviso via email em caso de aprensentar falhas.
+
+
 ## Install the dependencies
 
 ```
