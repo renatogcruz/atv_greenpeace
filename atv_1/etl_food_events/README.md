@@ -1,9 +1,5 @@
 # ETL FOOD_EVENTS | GREENPEACE
 
-
-
-# ETL CLIPPING | GREENPEACE
-
 ## Install the dependencies
 
 ```
