@@ -1,4 +1,38 @@
-# ETL CLIPPING | GREENPEACE
+# SENTIMENT CLASSIFICATION | GREENPEACE
+
+## Endpoints
+
+Essa integração se resume em 3 endpoints:
+
+1. **index** `https://url_cloud_run_gcp/`
+
+Esse endpoint é de boas-vindas ao projeto e é útil apenas para o ambiente de teste. Não tem função na infraestrutura da Cloud Computing.
+
+2. **get_articles** `https://url_cloud_run_gcp/get_articles`
+
+Este endpoint faz: 
+1 - requisições de dados da News API; 
+2 - limpeza e disponibilização de campo para classificação manual da equipe de imprensa com a avaliação de sentimento; 
+3 - salvar apenas dados novos na tabela `TABLE_ARTICLES` do `MySQL` (´banco de coleta´).
+
+A proposta de execução deste endpoint no cloud scheduler é às 6:00, horário posterior as atualizações das notícias matinais dos jornais.
+
+Como forma de autônomia da integração, este endpoint contém um serviço de aviso via email em caso de apresentar falhas.
+
+3. **create_task/<description>** `https://url_cloud_run_gcp/create_task/<description>`
+
+Este endpoint faz:
+1 - itera a tabela `TABLE_ARTICLES` do `MySQL` (apenas `processed_at IS NULL`, ou seja, aapenas notícias que não contenham a coluna `sentiment` preenchido);
+2 - cria uma Google Task
+3 - faz uma requisição `POST` para o endpoint seguinte.
+
+4. **predict** `https://url_cloud_run_gcp/predict`
+
+Este endpoint é iniciado automaticamente pelo Google Task e faz:
+1 - requece um payload (ID e DESCRIPTION da tabela `TABLE_ARTICLES` do `MySQL`);
+2 - executa a predição no modelo previamente treinado para classificação de sentimento.
+3 - salva resutlado na tabela `TABLE_PREDICT` do ´MySQL´ (´banco de sentimento´).
+
 
 ## Install the dependencies
 
