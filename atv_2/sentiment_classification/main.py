@@ -56,7 +56,7 @@ def create_task(site, category, crawler_date):
 def predict():
 
     response = request.json
-    variable = response['']
+    variable = response['description']
     try:
         # convert integers to float
         float_features = [float(x) for x in request.form.values()]
@@ -66,17 +66,16 @@ def predict():
         prediction = model.predict(features)
 
         # to save mySQL
-        # dataframe = functions.format_data_types(dataframe)
-        # dataframe.to_sql(environ['TABLE_DETAILS_PRODUCTION'], mysql.conn(),
-        #                  if_exists='append', index=False)
+        dataframe.to_sql(environ['TABLE_PREDICT'], mysql.conn(),
+                         if_exists='append', index=False)
         time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         processed_at = {
             'processed_at': time
         }
         response = mysql.update_product(
-            processed_at, int(id), environ['TABLE_PRODUCT_PRODUCTION'])
+            processed_at, int(id), environ['TABLE_ARTICLES'])
 
-        return 'render_template("index.html", prediction_text=f"The flower species is {prediction}")'
+        return jsonify({'status': 'success'}), 200
 
     except Exception:
         # to save LOGS

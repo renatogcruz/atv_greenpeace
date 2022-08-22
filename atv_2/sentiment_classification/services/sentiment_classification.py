@@ -150,8 +150,6 @@ train_data_loader = create_data_loader(
 val_data_loader = create_data_loader(df_val, tokenizer, MAX_LEN, BATCH_SIZE)
 test_data_loader = create_data_loader(df_test, tokenizer, MAX_LEN, BATCH_SIZE)
 
-data = next(iter(train_data_loader))
-data.keys()
 
 # Sentiment Classification with BERT and Hugging Face
 bert_model = BertModel.from_pretrained(PRE_TRAINED_MODEL_NAME)
@@ -188,8 +186,6 @@ model = model.to(device)
 input_ids = data['input_ids'].to(device)
 attention_mask = data['attention_mask'].to(device)
 
-print(input_ids.shape) # batch size x seq length
-print(attention_mask.shape) # batch size x seq length
 
 EPOCHS = 10
 
@@ -268,10 +264,6 @@ def eval_model(model, data_loader, loss_fn, device, n_examples):
   return correct_predictions.double() / n_examples, np.mean(losses)
 
 
-%%time
-
-history = defaultdict(list)
-best_accuracy = 0
 
 for epoch in range(EPOCHS):
     print(f'Epoch {epoch + 1}/{EPOCHS}')
@@ -299,11 +291,6 @@ for epoch in range(EPOCHS):
 
     print(f'Val   loss {val_loss} accuracy {val_acc}')
     print()
-
-    history['train_acc'].append(train_acc)
-    history['train_loss'].append(train_loss)
-    history['val_acc'].append(val_acc)
-    history['val_loss'].append(val_loss)
 
     if val_acc > best_accuracy:
         torch.save(model.state_dict(), 'best_model_state.bin')
