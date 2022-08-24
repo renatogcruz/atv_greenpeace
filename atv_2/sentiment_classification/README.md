@@ -2,7 +2,7 @@
 
 ## Endpoints
 
-Essa integração se resume em 3 endpoints:
+Essa integração se resume em 4 endpoints:
 
 1. **index** `https://url_cloud_run_gcp/`
 
