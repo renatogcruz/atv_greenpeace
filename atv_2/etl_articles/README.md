@@ -2,9 +2,9 @@
 
 ## Endpoints
 
-1. Essa integração se resume em 3 endpoints:
+Essa integração se resume em 3 endpoints:
 
-**index** `https://url_cloud_run_gcp/`
+1. **index** `https://url_cloud_run_gcp/`
 
 Esse endpoint é de boas-vindas do projeto e é útil para o ambiente de teste. Não tem função na infraestrutura da Cloud Computing.
 
