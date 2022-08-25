@@ -87,7 +87,7 @@ def create_task(description):
 
     query = f"""
     SELECT id, description
-    FROM products 
+    FROM TABLE_ARTICLES 
     WHERE processed_at IS NULL AND description = '{description}';
     """
 
