@@ -2,9 +2,9 @@
 
 ## Endpoints
 
-1. Essa integração se resume em 3 endpoints:
+Essa integração se resume em 3 endpoints:
 
-**index** `https://url_cloud_run_gcp/`
+1. **index** `https://url_cloud_run_gcp/`
 
 Esse endpoint é de boas-vindas do projeto e é útil para o ambiente de teste. Não tem função na infraestrutura da Cloud Computing.
 
@@ -30,6 +30,7 @@ A proposta de execução deste endpoint no `cloud scheduler` é às 20:00, horá
 
 Como forma de autônomia de integração, assim como no endpoint anterior, este também contém um serviço de aviso via email em caso de aprensentar falhas.
 
+![Fluxograma](atv_2/etl_articles.jpg)
 
 ## Install the dependencies
 

@@ -30,3 +30,5 @@ _______________________________
 
 # Observações:
 
+A principal dificuldade desta atividade foi a falta de informações do banco de dados, tais como: origem, data, especificações das variáveis (colunas). Apesar da proposta do exercício estar claro, informações sobre o banco de dados são sempre importantes para uma maior compreensão das variáveis a serem trabalhadas.
+

@@ -21,4 +21,6 @@ ________________
 _______________
 # Observação:
 
--
+A maior dificuldade desta atividade, para mim, foi a falta de familiaridade com gerenciamento de bancos de dados (autorizações de acesso). Apesar de trabalhar com bancos de dados diariamente, sempre recebo acesso aos bancos que preciso alimentar. Então, minha experiência é sempre na infraestrutura e engenharia de dados, e não no gerenciamento dos bancos. 
+
+Para responder as perguntas li os tutoriais da AWS e pesquisei sites como stackoverflow entre outros. Uma dificuldade extra foi a falta de aplicação num exemplo real, o que não permitiu a correção de possíveis erros das sintaxes respondidas. 
