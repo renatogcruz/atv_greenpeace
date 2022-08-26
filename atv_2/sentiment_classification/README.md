@@ -33,6 +33,7 @@ Este endpoint é iniciado automaticamente pelo Google Task e faz:
 2 - executa a predição no modelo previamente treinado para classificação de sentimento.
 3 - salva resutlado na tabela `TABLE_PREDICT` do ´MySQL´ (´banco de sentimento´).
 
+![sentiment](https://user-images.githubusercontent.com/32683908/186913323-1402b92b-f59a-4e18-969f-dae0a32e54ec.png)
 
 ## Install the dependencies
 
