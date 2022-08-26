@@ -30,7 +30,7 @@ A proposta de execução deste endpoint no `cloud scheduler` é às 20:00, horá
 
 Como forma de autônomia de integração, assim como no endpoint anterior, este também contém um serviço de aviso via email em caso de aprensentar falhas.
 
-![Fluxograma](atv_2/etl_articles.jpg)
+![etl](https://user-images.githubusercontent.com/32683908/186909371-d8266e29-f8a2-4260-af80-f2e3fc9bb776.png)
 
 ## Install the dependencies
 
